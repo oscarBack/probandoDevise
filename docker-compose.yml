@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:11.7-alpine
+    volumes:
+      - ./tmp/postgresql/data:/var/lib/postgresql/data
+    environment:
+    - POSTGRES_HOST_AUTH_METHOD=trust
+
+  webpacker:
+    image: bup/ruby-bundle:latest
+    command: bash -c 'rm -rf public/packs; bin/webpack-dev-server'
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/node_modules
+    ports:
+      - 3035:3035
+
+  web:
+    image: bup/ruby-bundle:latest
+    command: bash -c "rm -f tmp/pids/server.pid && bin/rails server -b '0.0.0.0'"
+    environment:
+      RUBYOPT: -W:no-deprecated -W:no-experimental
+      BUNDLE_JOBS: 8
+    volumes:
+      - .:/usr/src/app
+      - /user/src/node_modules
+    ports:
+      - 3030:3000
+    env_file:
+      - '.env'
+    depends_on:
+      - db
+      - webpacker
