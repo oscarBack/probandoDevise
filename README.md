@@ -1,24 +1,11 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Pormando Gemas
 
-Things you may want to cover:
+* devise
+* doorkeeper
 
-* Ruby version
+## Models
 
-* System dependencies
+* rails g model Notes title:string priority:integer detail:string
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...

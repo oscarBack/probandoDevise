@@ -5,3 +5,15 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Note.create!    title: "Titulo 1",
+                priority: 1,
+                detail: "dasdhashdashdkjas"
+
+Note.create!    title: "Titulo 2",
+                priority: 2,
+                detail: "dasdhashdashdkjas"
+
+Note.create!    title: "Titulo 2.1",
+                priority: 3,
+                detail: "dasdhashdashdkjas"
