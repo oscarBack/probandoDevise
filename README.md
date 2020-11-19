@@ -1,11 +1,13 @@
 # README
 
-## Pormando Gemas
+## Probando Gemas no conocidas
 
 * devise
 * doorkeeper
+* jbuilder
 
-## Models
+## Comandos
 
 * rails g model Notes title:string priority:integer detail:string
+* rails g controller api/notes
 
