@@ -12,8 +12,13 @@ Doorkeeper.configure do
   #   # Example implementation:
   #   #   User.find_by(id: session[:user_id]) || redirect_to(new_user_session_url)
   # end
+  
+  # Antes
+  # resource_owner_authenticator do
+  #   current_user || warden.authenticate!(scope: :user)
+  # end
   resource_owner_authenticator do
-    current_user || warden.authenticate!(scope: :user)
+    User.find_by(id: session[:current_user_id]) || redirect_to(login_url)
   end
 
   # If you didn't skip applications controller from Doorkeeper routes in your application routes.rb
@@ -227,7 +232,7 @@ Doorkeeper.configure do
   # NOTE: you must also run the rails g doorkeeper:application_owner generator
   # to provide the necessary support
   #
-  # enable_application_owner confirmation: false
+  enable_application_owner confirmation: false
 
   # Define access token scopes for your provider
   # For more information go to
